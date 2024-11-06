@@ -1,3 +1,5 @@
+[![build and test](https://github.com/strvmarv/updown-dotnet/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/strvmarv/updown-dotnet/actions/workflows/build-and-test.yml)
+
 # updown-dotnet
 A simple Updown.io .NET Client
 

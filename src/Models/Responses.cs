@@ -2,7 +2,7 @@
 
 namespace UpdownDotnet.Models
 {
-    public class CheckDeleteResponse
+    public class DeleteResponse
     {
         [JsonPropertyName("deleted")]
         public bool Deleted { get; set; }

@@ -8,7 +8,7 @@ using NUnit.Framework;
 using UpdownDotnet;
 using UpdownDotnet.Models;
 
-namespace UpdownDotNetTests
+namespace UpdownDotNetTests.Checks
 {
     public class ChecksManualTests : BaseTest
     {
@@ -31,61 +31,60 @@ namespace UpdownDotNetTests
         public async Task Checks(string apiKey)
         {
             var client = UpdownClientFactory.Create(apiKey);
-            var checks = await client.Checks();
-            var check = checks.FirstOrDefault();
+            var results = await client.Checks();
+            var result = results.FirstOrDefault();
 
-            _logger.LogDebug($"{checks.Count} returned");
-            _logger.LogDebug(JsonSerializer.Serialize(check, JsonOptions));
+            _logger.LogDebug($"{results.Count} returned");
+            _logger.LogDebug(JsonSerializer.Serialize(results, JsonOptions));
 
-            Assert.That(checks, Is.Not.Null);
+            Assert.That(results, Is.Not.Null);
         }
 
         [TestCase(ApiKey), Explicit]
         public async Task Check(string apiKey)
         {
             var client = UpdownClientFactory.Create(apiKey);
-            var checks = await client.Checks();
-            var first = checks.Skip(Random.Shared.Next(0, checks.Count)).First();
-            var check = await client.Check(first.Token);
+            var results = await client.Checks();
+            var first = results.Skip(Random.Shared.Next(0, results.Count)).First();
+            var result = await client.Check(first.Token);
 
-            _logger.LogDebug(JsonSerializer.Serialize(check, JsonOptions));
+            _logger.LogDebug(JsonSerializer.Serialize(result, JsonOptions));
 
             Assert.Multiple(() =>
             {
-                Assert.That(check, Is.Not.Null);
-                Assert.That(check.Url, Is.Not.Null);
+                Assert.That(result, Is.Not.Null);
+                Assert.That(result.Url, Is.Not.Null);
             });
         }
 
         [TestCase(ApiKey), Explicit]
         public async Task CheckCreateUpdateDelete(string apiKey)
         {
-            const string url = "https://www.radancy.com";
+            var parameters = new CheckParameters
+            {
+                Url = "https://www.radancy.com",
+                Custom_Headers = new Custom_Headers { UserAgent = "updown.io" }
+            };
             var client = UpdownClientFactory.Create(apiKey);
 
             // cleanup
 
-            var checks = await client.Checks();
-            var exists = checks.FirstOrDefault(c => url.Equals(c.Url));
+            var results = await client.Checks();
+            var exists = results.FirstOrDefault(c => parameters.Url.Equals(c.Url));
             if (exists != null)
             {
                 await client.CheckDelete(exists.Token);
             }
 
             // create
+            var result = await client.CheckCreate(parameters);
 
-            var parameters = new CheckParameters
-            {
-                Url = url,
-            };
-            var check = await client.CheckCreate(parameters);
-
-            _logger.LogDebug(JsonSerializer.Serialize(check, JsonOptions));
+            _logger.LogDebug(JsonSerializer.Serialize(result, JsonOptions));
 
             Assert.Multiple(() =>
             {
-                Assert.That(check, Is.Not.Null);
-                Assert.That(check.Token, Is.Not.Null);
+                Assert.That(result, Is.Not.Null);
+                Assert.That(result.Token, Is.Not.Null);
             });
 
             // update
@@ -94,7 +93,7 @@ namespace UpdownDotNetTests
             {
                 Period = 300
             };
-            var update = await client.CheckUpdate(check.Token, updateParameters);
+            var update = await client.CheckUpdate(result.Token, updateParameters);
 
             _logger.LogDebug(JsonSerializer.Serialize(update, JsonOptions));
 
@@ -102,12 +101,12 @@ namespace UpdownDotNetTests
             {
                 Assert.That(update, Is.Not.Null);
                 Assert.That(update.Period, Is.EqualTo(300));
-                Assert.That(check.Token, Is.EqualTo(update.Token));
+                Assert.That(result.Token, Is.EqualTo(update.Token));
             });
 
             // delete
 
-            var delete = await client.CheckDelete(check.Token);
+            var delete = await client.CheckDelete(result.Token);
 
             _logger.LogDebug(JsonSerializer.Serialize(delete, JsonOptions));
 

@@ -9,7 +9,7 @@ using UpdownDotnet.Models;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 
-namespace UpdownDotNetTests
+namespace UpdownDotNetTests.Checks
 {
     public class ChecksTests : BaseHttpClientTest
     {
@@ -30,9 +30,13 @@ namespace UpdownDotNetTests
         {
             var mockResult = new List<Check>
             {
-                new() {Url = "https://i-am-a-test.com"}
+                new Check
+                {
+                    Url = "https://i-am-a-test.com",
+                    Custom_Headers = new Custom_Headers { UserAgent = "curl" }
+                }
             };
-
+            
             Server.Given(Request.Create()
                     .WithPath($"/{UpdownClient.ChecksPath}")
                     .UsingGet())
@@ -41,11 +45,11 @@ namespace UpdownDotNetTests
                     .WithBodyAsJson(mockResult));
 
             var client = UpdownClientFactory.Create(Server.CreateClient());
-            var checks = await client.Checks();
+            var results = await client.Checks();
 
-            Assert.That(() => checks.Count == 1);
+            Assert.That(() => results.Count == 1);
 
-            _logger.LogDebug(JsonSerializer.Serialize(checks, _jsonSerializerOptions));
+            _logger.LogDebug(JsonSerializer.Serialize(results, _jsonSerializerOptions));
         }
 
         [Test]
@@ -61,17 +65,17 @@ namespace UpdownDotNetTests
                     .WithBodyAsJson(mockResult));
 
             var client = UpdownClientFactory.Create(Server.CreateClient());
-            var check = await client.Check(mockResult.Token);
+            var result = await client.Check(mockResult.Token);
 
-            Assert.That(() => check != null);
+            Assert.That(() => result != null);
 
-            _logger.LogDebug(JsonSerializer.Serialize(check, _jsonSerializerOptions));
+            _logger.LogDebug(JsonSerializer.Serialize(result, _jsonSerializerOptions));
         }
 
         [Test]
         public void CheckNotFound()
         {
-            var mockResult = new Check { Token = "token", Url = "https://i-am-a-test.com" };
+            var mockInput = new Check { Token = "token", Url = "https://i-am-a-test.com" };
 
             Server.Given(Request.Create()
                     .WithPath($"/{UpdownClient.ChecksPath}/token")
@@ -81,13 +85,17 @@ namespace UpdownDotNetTests
 
             var client = UpdownClientFactory.Create(Server.CreateClient());
 
-            Assert.ThrowsAsync<HttpRequestException>(() => client.Check(mockResult.Token));
+            Assert.ThrowsAsync<HttpRequestException>(() => client.Check(mockInput.Token));
         }
 
         [Test]
         public async Task CheckCreate()
         {
-            var mockParameters = new CheckParameters { Url = "https://i-am-a-test.com" };
+            var mockParameters = new CheckParameters
+            {
+                Url = "https://i-am-a-test.com",
+                Custom_Headers = new Custom_Headers { UserAgent = "curl" }
+            };
 
             Server.Given(Request.Create()
                     .WithPath($"/{UpdownClient.ChecksPath}")
@@ -122,17 +130,17 @@ namespace UpdownDotNetTests
         [Test]
         public async Task CheckDelete()
         {
-            var mockResult = new Check { Token = "token", Url = "https://i-am-a-test.com" };
+            var mockInput = new Check { Token = "token", Url = "https://i-am-a-test.com" };
 
             Server.Given(Request.Create()
-                    .WithPath($"/{UpdownClient.ChecksPath}/{mockResult.Token}")
+                    .WithPath($"/{UpdownClient.ChecksPath}/{mockInput.Token}")
                     .UsingDelete())
                 .RespondWith(Response.Create()
                     .WithStatusCode(200)
                     .WithBodyAsJson(new { deleted = true }));
 
             var client = UpdownClientFactory.Create(Server.CreateClient());
-            var result = await client.CheckDelete(mockResult.Token);
+            var result = await client.CheckDelete(mockInput.Token);
 
             Assert.That(result?.Deleted, Is.True);
 
@@ -142,17 +150,17 @@ namespace UpdownDotNetTests
         [Test]
         public void CheckDeleteNotFound()
         {
-            var mockResult = new Check { Token = "token", Url = "https://i-am-a-test.com" };
+            var mockInput = new Check { Token = "token", Url = "https://i-am-a-test.com" };
 
             Server.Given(Request.Create()
-                    .WithPath($"/{UpdownClient.ChecksPath}/{mockResult.Token}")
+                    .WithPath($"/{UpdownClient.ChecksPath}/{mockInput.Token}")
                     .UsingDelete())
                 .RespondWith(Response.Create()
                     .WithStatusCode(404)
                     .WithNotFound());
 
             var client = UpdownClientFactory.Create(Server.CreateClient());
-            Assert.ThrowsAsync<HttpRequestException>(() => client.CheckDelete(mockResult.Token));
+            Assert.ThrowsAsync<HttpRequestException>(() => client.CheckDelete(mockInput.Token));
         }
 
         [Test]

@@ -32,10 +32,10 @@ namespace UpdownDotnet
             return result;
         }
 
-        public async Task<CheckDeleteResponse> CheckDelete(string token)
+        public async Task<DeleteResponse> CheckDelete(string token)
         {
             var uri = new Uri($"{ChecksPath}/{token}", UriKind.Relative);
-            var result = await DeleteAsync<CheckDeleteResponse>(uri).ConfigureAwait(false);
+            var result = await DeleteAsync<DeleteResponse>(uri).ConfigureAwait(false);
             return result;
         }
 

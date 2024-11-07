@@ -12,7 +12,23 @@ A simple Updown.io .NET Client
 - You may provide your own HttpClient instance if you want to manage the lifecycle of the HttpClient.
 - Manual tests are provided if you'd like to observe the client in action.  You will need to provide your own API key.
 
+# State
+
+| Entity | Implemented |
+---------|------------
+| Checks | :white_check_mark: |
+| Downtimes | :x: |
+| Metrics | :x: |
+| Nodes | :x: |
+| Recipients | :white_check_mark: |
+| Status Pages | :white_check_mark: |
+
 # Usage
+
+Example usage using Checks.  Implementation across entities is similar.  Though some entities may not support all methods.  
+
+[!IMPORTANT]
+Use manual tests for reference.
 
 ## Get all checks
 ```csharp

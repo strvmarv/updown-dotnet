@@ -3,6 +3,15 @@
 # updown-dotnet
 A simple Updown.io .NET Client
 
+# Notes
+
+- This client is a simple wrapper around the Updown.io API. It does not implement all the API endpoints.
+- The client uses the System.Text.Json namespace to serialize and deserialize JSON data.
+- The client is asynchronous and uses the HttpClient class to make HTTP requests to the Updown.io API.
+- The HttpClient is implemented per Micrsoft recommendations.  In this case, a Singleton that is reused.
+- You may provide your own HttpClient instance if you want to manage the lifecycle of the HttpClient.
+- Manual tests are provided if you'd like to observe the client in action.  You will need to provide your own API key.
+
 # Usage
 
 ## Get all checks
@@ -47,16 +56,17 @@ var delete = await client.CheckDelete("EXISTING-CHECK-TOKEN");
 
 ```
 
+# Contributing
+Use your favorite IDE to open the project.  The project was developed using Visual Studio.
+
+```bash
+git clone https://github.com/strvmarv/updown-dotnet.git
+cd updown-dotnet
+dotnet restore
+dotnet build
+```
+
 ## Run Tests
 ```bash
 dotnet test
 ```
-
-# Notes
-
-- This client is a simple wrapper around the Updown.io API. It does not implement all the API endpoints.
-- The client uses the System.Text.Json namespace to serialize and deserialize JSON data.
-- The client is asynchronous and uses the HttpClient class to make HTTP requests to the Updown.io API.
-- The HttpClient is implemented per Micrsoft recommendations.  In this case, a Singleton that is reused.
-- You may provide your own HttpClient instance if you want to manage the lifecycle of the HttpClient.
-- Manual tests are provided if you'd like to observe the client in action.  You will need to provide your own API key.

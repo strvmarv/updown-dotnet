@@ -2,8 +2,10 @@
 
 namespace UpdownDotnet
 {
-    public partial class UpdownClient(HttpClient httpClient) : UpdownClientBase(httpClient)
+    public partial class UpdownClient : UpdownClientBase
     {
-
+        public UpdownClient(HttpClient httpClient) : base(httpClient)
+        {
+        }
     }
 }

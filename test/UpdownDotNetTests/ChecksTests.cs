@@ -129,12 +129,12 @@ namespace UpdownDotNetTests
                     .UsingDelete())
                 .RespondWith(Response.Create()
                     .WithStatusCode(200)
-                    .WithBodyAsJson(new CheckDeleteResponse { Deleted = true }));
+                    .WithBodyAsJson(new { deleted = true }));
 
             var client = UpdownClientFactory.Create(Server.CreateClient());
             var result = await client.CheckDelete(mockResult.Token);
 
-            Assert.That(() => result.Deleted);
+            Assert.That(result?.Deleted, Is.True);
 
             _logger.LogDebug(JsonSerializer.Serialize(result, _jsonSerializerOptions));
         }

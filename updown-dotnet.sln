@@ -18,6 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "github", "github", "{2E9CBF
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\build-and-test.yml = .github\workflows\build-and-test.yml
 		.github\workflows\build-test-nuget.yml = .github\workflows\build-test-nuget.yml
+		.github\workflows\codeql.yml = .github\workflows\codeql.yml
 		.github\dependabot.yml = .github\dependabot.yml
 	EndProjectSection
 EndProject

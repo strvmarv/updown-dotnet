@@ -5,8 +5,6 @@ namespace UpdownDotnet.Models
 {
     public class CheckParameters
     {
-        //[JsonPropertyName("token")]
-        //public string Token { get; set; }
         [JsonPropertyName("url")]
         public string Url { get; set; }
         [JsonPropertyName("alias")]

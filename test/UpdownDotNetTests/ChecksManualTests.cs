@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -14,7 +14,7 @@ namespace UpdownDotNetTests
     {
         private const string ApiKey = "YOUR-API-KEY-HERE";
 
-        private static readonly JsonSerializerOptions JsonOptions = new()
+        private static readonly JsonSerializerOptions JsonOptions = new JsonSerializerOptions()
         {
             DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
             WriteIndented = true
@@ -32,9 +32,12 @@ namespace UpdownDotNetTests
         {
             var client = UpdownClientFactory.Create(apiKey);
             var checks = await client.Checks();
+            var check = checks.FirstOrDefault();
 
             _logger.LogDebug($"{checks.Count} returned");
-            _logger.LogDebug(JsonSerializer.Serialize(checks.Take(1), JsonOptions));
+            _logger.LogDebug(JsonSerializer.Serialize(check, JsonOptions));
+
+            Assert.That(checks, Is.Not.Null);
         }
 
         [TestCase(ApiKey), Explicit]
@@ -46,6 +49,12 @@ namespace UpdownDotNetTests
             var check = await client.Check(first.Token);
 
             _logger.LogDebug(JsonSerializer.Serialize(check, JsonOptions));
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(check, Is.Not.Null);
+                Assert.That(check.Url, Is.Not.Null);
+            });
         }
 
         [TestCase(ApiKey), Explicit]
@@ -62,7 +71,7 @@ namespace UpdownDotNetTests
             {
                 await client.CheckDelete(exists.Token);
             }
-            
+
             // create
 
             var parameters = new CheckParameters
@@ -71,9 +80,13 @@ namespace UpdownDotNetTests
             };
             var check = await client.CheckCreate(parameters);
 
-            Assert.That(check, Is.Not.Null);
-
             _logger.LogDebug(JsonSerializer.Serialize(check, JsonOptions));
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(check, Is.Not.Null);
+                Assert.That(check.Token, Is.Not.Null);
+            });
 
             // update
 
@@ -85,18 +98,24 @@ namespace UpdownDotNetTests
 
             _logger.LogDebug(JsonSerializer.Serialize(update, JsonOptions));
 
-            // delete
+            Assert.Multiple(() =>
+            {
+                Assert.That(update, Is.Not.Null);
+                Assert.That(update.Period, Is.EqualTo(300));
+                Assert.That(check.Token, Is.EqualTo(update.Token));
+            });
 
-            Assert.That(update, Is.Not.Null);
-            Assert.That(update.Period, Is.EqualTo(300));
-            Assert.That(check.Token, Is.EqualTo(update.Token));
+            // delete
 
             var delete = await client.CheckDelete(check.Token);
 
             _logger.LogDebug(JsonSerializer.Serialize(delete, JsonOptions));
 
-            Assert.That(delete, Is.Not.Null);
-            Assert.That(delete.Deleted, Is.True);
+            Assert.Multiple(() =>
+            {
+                Assert.That(delete, Is.Not.Null);
+                Assert.That(delete.Deleted, Is.True);
+            });
         }
     }
 }

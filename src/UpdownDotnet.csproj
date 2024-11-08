@@ -7,7 +7,7 @@
 
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<PackageId>UpdownDotnet</PackageId>
-		<PackageVersion>1.0.3</PackageVersion>
+		<PackageVersion>1.0.4</PackageVersion>
 		<Authors>strvmarv</Authors>
 		<Description>A simple Updown.io REST API client for .NET</Description>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -16,12 +16,16 @@
 		<PackageTags>updown monitoring rest api</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageReleaseNotes>
-			Add recipient and status page support
+			fix net6.0 system.text.json reference
 		</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="System.Text.Json" Version="8.0.5" />
+		<Reference Include="System.Text.Json" Version="8.0.5" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
+		<PackageReference Include="System.Text.Json" Version="6.0.10" />
 	</ItemGroup>
 
 	<ItemGroup>

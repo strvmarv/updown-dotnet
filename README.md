@@ -5,6 +5,8 @@ A simple Updown.io .NET Client
 
 https://www.nuget.org/packages/UpdownDotnet
 
+Don't currently utilize Updown.IO?  Join here --> https://updown.io/r/WioVu
+
 # Notes
 
 - This client is a simple wrapper around the Updown.io API. It does not implement all the API endpoints.

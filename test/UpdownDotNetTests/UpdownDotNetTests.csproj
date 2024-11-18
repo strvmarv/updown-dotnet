@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFrameworks>net8.0;net6.0</TargetFrameworks>
 		<ImplicitUsings>disable</ImplicitUsings>
-		<Nullable>annotations</Nullable>
+		<Nullable>disable</Nullable>
 
 		<IsPackable>false</IsPackable>
 		<IsTestProject>true</IsTestProject>

@@ -13,7 +13,7 @@ namespace UpdownDotNetTests.StatusPages
 {
     public class StatusPageTests : BaseHttpClientTest
     {
-        private readonly JsonSerializerOptions _jsonSerializerOptions = new()
+        private readonly JsonSerializerOptions _jsonSerializerOptions = new JsonSerializerOptions
         {
             WriteIndented = true
         };

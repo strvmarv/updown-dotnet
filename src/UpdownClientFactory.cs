@@ -7,11 +7,19 @@ namespace UpdownDotnet
 {
     public class UpdownClientFactory
     {
-        private static readonly HttpClient DefaultHttpClient = new(new SocketsHttpHandler()
+
+#if  NET5_0_OR_GREATER
+        private static readonly HttpClient DefaultHttpClient = new HttpClient(new SocketsHttpHandler()
         {
             AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
             PooledConnectionLifetime = TimeSpan.FromMinutes(5)
         });
+#else
+        private static readonly HttpClient DefaultHttpClient = new HttpClient(new HttpClientHandler()
+        {
+            AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+        });
+#endif
 
         static UpdownClientFactory()
         {

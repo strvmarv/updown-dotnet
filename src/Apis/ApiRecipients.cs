@@ -18,7 +18,7 @@ namespace UpdownDotnet
             return result;
         }
 
-        public async Task<Recipient?> RecipientCreate(RecipientParameters parameters)
+        public async Task<Recipient> RecipientCreate(RecipientParameters parameters)
         {
             var uri = new Uri($"{RecipientPath}", UriKind.Relative);
             var result = await PostAsync<Recipient>(uri, parameters).ConfigureAwait(false);

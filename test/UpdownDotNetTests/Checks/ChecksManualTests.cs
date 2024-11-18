@@ -45,7 +45,8 @@ namespace UpdownDotNetTests.Checks
         {
             var client = UpdownClientFactory.Create(apiKey);
             var results = await client.Checks();
-            var first = results.Skip(Random.Shared.Next(0, results.Count)).First();
+            var random = new Random();
+            var first = results.Skip(random.Next(0, results.Count)).First();
             var result = await client.Check(first.Token);
 
             _logger.LogDebug(JsonSerializer.Serialize(result, JsonOptions));

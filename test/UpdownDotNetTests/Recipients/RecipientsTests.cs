@@ -13,7 +13,7 @@ namespace UpdownDotNetTests.Recipients
 {
     public class RecipientsTests : BaseHttpClientTest
     {
-        private readonly JsonSerializerOptions _jsonSerializerOptions = new()
+        private readonly JsonSerializerOptions _jsonSerializerOptions = new JsonSerializerOptions
         {
             WriteIndented = true
         };

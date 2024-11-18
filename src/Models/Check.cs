@@ -30,9 +30,9 @@ namespace UpdownDotnet.Models
         [JsonPropertyName("token")]
         public string Token { get; set; }
         [JsonPropertyName("url")]
-        public string? Url { get; set; }
+        public string Url { get; set; }
         [JsonPropertyName("alias")]
-        public string? Alias { get; set; }
+        public string Alias { get; set; }
         [JsonPropertyName("last_status")]
         public double? Last_Status { get; set; }
         [JsonPropertyName("uptime")]
@@ -44,21 +44,21 @@ namespace UpdownDotnet.Models
         [JsonPropertyName("up_since")]
         public DateTimeOffset? Up_Since { get; set; }
         [JsonPropertyName("error")]
-        public string? Error { get; set; }
+        public string Error { get; set; }
         [JsonPropertyName("period")]
         public double? Period { get; set; }
         [JsonPropertyName("apdex_t")]
         public double? Apdex_T { get; set; }
         [JsonPropertyName("string_match")]
-        public string? String_Match { get; set; }
+        public string String_Match { get; set; }
         [JsonPropertyName("enabled")]
         public bool? Enabled { get; set; }
         [JsonPropertyName("published")]
         public bool? Published { get; set; }
         [JsonPropertyName("disabled_locations")]
-        public List<string>? Disabled_Locations { get; set; }
+        public List<string> Disabled_Locations { get; set; }
         [JsonPropertyName("recipients")]
-        public List<string>? Recipients { get; set; }
+        public List<string> Recipients { get; set; }
         [JsonPropertyName("last_check_at")]
         public DateTimeOffset? Last_Check_At { get; set; }
         [JsonPropertyName("next_check_at")]
@@ -66,17 +66,17 @@ namespace UpdownDotnet.Models
         [JsonPropertyName("created_at")]
         public DateTimeOffset? Created_At { get; set; }
         [JsonPropertyName("mute_until")]
-        public string? Mute_Until { get; set; }
+        public string Mute_Until { get; set; }
         [JsonPropertyName("favicon_url")]
-        public string? FavIcon_Url { get; set; }
+        public string FavIcon_Url { get; set; }
         [JsonPropertyName("custom_headers")]
-        public Custom_Headers? Custom_Headers { get; set; }
+        public Custom_Headers Custom_Headers { get; set; }
         [JsonPropertyName("http_verb")]
-        public string? Http_Verb { get; set; }
+        public string Http_Verb { get; set; }
         [JsonPropertyName("http_body")]
-        public string? Http_Body { get; set; }
+        public string Http_Body { get; set; }
         [JsonPropertyName("ssl")]
-        public Ssl? Ssl { get; set; }
+        public Ssl Ssl { get; set; }
     }
 
     public class Custom_Headers
@@ -102,7 +102,7 @@ namespace UpdownDotnet.Models
         [JsonPropertyName("valid")]
         public bool? Valid { get; set; }
         [JsonPropertyName("error")]
-        public string? Error { get; set; }
+        public string Error { get; set; }
     }
 
     public class CheckParameters
@@ -110,7 +110,7 @@ namespace UpdownDotnet.Models
         [JsonPropertyName("url")]
         public string Url { get; set; }
         [JsonPropertyName("alias")]
-        public string? Alias { get; set; }
+        public string Alias { get; set; }
         [JsonPropertyName("down")]
         public bool? Down { get; set; }
         [JsonPropertyName("period")]
@@ -118,24 +118,24 @@ namespace UpdownDotnet.Models
         [JsonPropertyName("apdex_t")]
         public double? Apdex_T { get; set; }
         [JsonPropertyName("string_match")]
-        public string? String_Match { get; set; }
+        public string String_Match { get; set; }
         [JsonPropertyName("enabled")]
         public bool? Enabled { get; set; }
         [JsonPropertyName("published")]
         public bool? Published { get; set; }
         [JsonPropertyName("disabled_locations")]
-        public List<string>? Disabled_Locations { get; set; }
+        public List<string> Disabled_Locations { get; set; }
         [JsonPropertyName("recipients")]
-        public List<string>? Recipients { get; set; }
+        public List<string> Recipients { get; set; }
         [JsonPropertyName("mute_until")]
-        public string? Mute_Until { get; set; }
+        public string Mute_Until { get; set; }
         [JsonPropertyName("favicon_url")]
-        public string? FavIcon_Url { get; set; }
+        public string FavIcon_Url { get; set; }
         [JsonPropertyName("custom_headers")]
-        public Custom_Headers? Custom_Headers { get; set; }
+        public Custom_Headers Custom_Headers { get; set; }
         [JsonPropertyName("http_verb")]
-        public string? Http_Verb { get; set; }
+        public string Http_Verb { get; set; }
         [JsonPropertyName("http_body")]
-        public string? Http_Body { get; set; }
+        public string Http_Body { get; set; }
     }
 }

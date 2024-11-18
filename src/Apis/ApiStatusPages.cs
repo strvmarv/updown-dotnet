@@ -18,7 +18,7 @@ namespace UpdownDotnet
             return result;
         }
 
-        public async Task<StatusPage?> StatusPageCreate(StatusPageParameters parameters)
+        public async Task<StatusPage> StatusPageCreate(StatusPageParameters parameters)
         {
             var uri = new Uri($"{StatusPagesPath}", UriKind.Relative);
             var result = await PostAsync<StatusPage>(uri, parameters).ConfigureAwait(false);
@@ -32,7 +32,7 @@ namespace UpdownDotnet
             return result;
         }
 
-        public async Task<StatusPage?> StatusPageUpdate(string token, StatusPageParameters parameters)
+        public async Task<StatusPage> StatusPageUpdate(string token, StatusPageParameters parameters)
         {
             var uri = new Uri($"{StatusPagesPath}/{token}", UriKind.Relative);
             var result = await PutAsync<StatusPage>(uri, parameters).ConfigureAwait(false);

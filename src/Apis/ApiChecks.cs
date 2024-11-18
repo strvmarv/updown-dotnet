@@ -18,14 +18,14 @@ namespace UpdownDotnet
             return result;
         }
 
-        public async Task<Check?> Check(string token)
+        public async Task<Check> Check(string token)
         {
             var uri = new Uri($"{ChecksPath}/{token}", UriKind.Relative);
             var result = await GetAsync<Check>(uri).ConfigureAwait(false);
             return result;
         }
 
-        public async Task<Check?> CheckCreate(CheckParameters parameters)
+        public async Task<Check> CheckCreate(CheckParameters parameters)
         {
             var uri = new Uri($"{ChecksPath}", UriKind.Relative);
             var result = await PostAsync<Check>(uri, parameters).ConfigureAwait(false);
@@ -39,7 +39,7 @@ namespace UpdownDotnet
             return result;
         }
 
-        public async Task<Check?> CheckUpdate(string token, CheckParameters parameters)
+        public async Task<Check> CheckUpdate(string token, CheckParameters parameters)
         {
             var uri = new Uri($"{ChecksPath}/{token}", UriKind.Relative);
             var result = await PutAsync<Check>(uri, parameters).ConfigureAwait(false);

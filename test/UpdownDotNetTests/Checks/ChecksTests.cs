@@ -13,7 +13,7 @@ namespace UpdownDotNetTests.Checks
 {
     public class ChecksTests : BaseHttpClientTest
     {
-        private readonly JsonSerializerOptions _jsonSerializerOptions = new()
+        private readonly JsonSerializerOptions _jsonSerializerOptions = new JsonSerializerOptions
         {
             WriteIndented = true
         };

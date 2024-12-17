@@ -33,7 +33,7 @@ namespace UpdownDotNetTests.Checks
                 new Check
                 {
                     Url = "https://i-am-a-test.com",
-                    Custom_Headers = new Custom_Headers { UserAgent = "curl" }
+                    Custom_Headers = new Dictionary<string, string>() { { "User-Agent", "curl" }}
                 }
             };
             
@@ -94,7 +94,7 @@ namespace UpdownDotNetTests.Checks
             var mockParameters = new CheckParameters
             {
                 Url = "https://i-am-a-test.com",
-                Custom_Headers = new Custom_Headers { UserAgent = "curl" }
+                Custom_Headers = new Dictionary<string, string>() { { "User-Agent", "curl" }}
             };
 
             Server.Given(Request.Create()

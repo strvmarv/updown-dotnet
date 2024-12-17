@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -64,8 +65,9 @@ namespace UpdownDotNetTests.Checks
             var parameters = new CheckParameters
             {
                 Url = "https://www.radancy.com",
-                Custom_Headers = new Custom_Headers { UserAgent = "updown.io" }
+                Custom_Headers = new Dictionary<string, string>()
             };
+            parameters.Custom_Headers.Add("X-Test-1", "updown.io");
             var client = UpdownClientFactory.Create(apiKey);
 
             // cleanup
@@ -86,14 +88,18 @@ namespace UpdownDotNetTests.Checks
             {
                 Assert.That(result, Is.Not.Null);
                 Assert.That(result.Token, Is.Not.Null);
+                Assert.That(result.Custom_Headers, Is.Not.Null);
+                Assert.That(result.Custom_Headers.Count, Is.EqualTo(1));
             });
 
             // update
 
             var updateParameters = new CheckParameters
             {
-                Period = 300
+                Period = 300,
+                Custom_Headers = result.Custom_Headers
             };
+            updateParameters.Custom_Headers.Add("X-Test-2", "updown.io");
             var update = await client.CheckUpdate(result.Token, updateParameters);
 
             _logger.LogDebug(JsonSerializer.Serialize(update, JsonOptions));
@@ -103,6 +109,8 @@ namespace UpdownDotNetTests.Checks
                 Assert.That(update, Is.Not.Null);
                 Assert.That(update.Period, Is.EqualTo(300));
                 Assert.That(result.Token, Is.EqualTo(update.Token));
+                Assert.That(result.Custom_Headers, Is.Not.Null);
+                Assert.That(result.Custom_Headers.Count, Is.EqualTo(2));
             });
 
             // delete

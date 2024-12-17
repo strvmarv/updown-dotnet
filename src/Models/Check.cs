@@ -70,27 +70,13 @@ namespace UpdownDotnet.Models
         [JsonPropertyName("favicon_url")]
         public string FavIcon_Url { get; set; }
         [JsonPropertyName("custom_headers")]
-        public Custom_Headers Custom_Headers { get; set; }
+        public Dictionary<string, string> Custom_Headers { get; set; }
         [JsonPropertyName("http_verb")]
         public string Http_Verb { get; set; }
         [JsonPropertyName("http_body")]
         public string Http_Body { get; set; }
         [JsonPropertyName("ssl")]
         public Ssl Ssl { get; set; }
-    }
-
-    public class Custom_Headers
-    {
-        [JsonPropertyName("User-Agent")]
-        public string UserAgent { get; set; }
-        [JsonPropertyName("Accept")]
-        public string Accept { get; set; }
-        [JsonPropertyName("Connection")]
-        public string Connection { get; set; }
-        [JsonPropertyName("Accept-Language")]
-        public string Accept_Language { get; set; }
-        [JsonPropertyName("Accept_Encoding")]
-        public string Accept_Encoding { get; set; }
     }
 
     public class Ssl
@@ -132,7 +118,7 @@ namespace UpdownDotnet.Models
         [JsonPropertyName("favicon_url")]
         public string FavIcon_Url { get; set; }
         [JsonPropertyName("custom_headers")]
-        public Custom_Headers Custom_Headers { get; set; }
+        public Dictionary<string, string> Custom_Headers { get; set; }
         [JsonPropertyName("http_verb")]
         public string Http_Verb { get; set; }
         [JsonPropertyName("http_body")]

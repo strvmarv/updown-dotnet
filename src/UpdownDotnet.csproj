@@ -17,8 +17,9 @@
 		<PackageTags>updown monitoring rest api</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageReleaseNotes>
-			fixed custom_headers usage
+			embed sources for debugging
 		</PackageReleaseNotes>
+                <EmbedAllSources>True</EmbedAllSources>
 	</PropertyGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">

@@ -7,6 +7,7 @@ namespace UpdownDotnet
 {
     public class UpdownClientFactory
     {
+        public const string UserAgentValue = "updown-dotnet";
 
 #if  NET5_0_OR_GREATER
         private static readonly HttpClient DefaultHttpClient = new HttpClient(new SocketsHttpHandler()
@@ -25,6 +26,7 @@ namespace UpdownDotnet
         {
             DefaultHttpClient.DefaultRequestHeaders.AcceptEncoding.TryParseAdd("gzip");
             DefaultHttpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            DefaultHttpClient.DefaultRequestHeaders.Add("user-agent", UserAgentValue);
             DefaultHttpClient.BaseAddress = new Uri(UpdownClientBase.DefaultApiUrl);
         }
 

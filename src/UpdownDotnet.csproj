@@ -8,7 +8,7 @@
 		<DebugType>embedded</DebugType>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<PackageId>UpdownDotnet</PackageId>
-		<PackageVersion>1.0.7</PackageVersion>
+		<PackageVersion>1.0.8</PackageVersion>
 		<Authors>strvmarv</Authors>
 		<Description>A simple Updown.io REST API client for .NET</Description>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -17,7 +17,7 @@
 		<PackageTags>updown monitoring rest api</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageReleaseNotes>
-			embed sources for debugging
+			add user agent to client
 		</PackageReleaseNotes>
                 <EmbedAllSources>True</EmbedAllSources>
 	</PropertyGroup>

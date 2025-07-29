@@ -61,5 +61,22 @@ namespace UpdownDotnet
             var result = await JsonSerializer.DeserializeAsync<T>(respContent, JsonOptions).ConfigureAwait(false);
             return result;
         }
+
+        // Methods for making simple HTTP requests to absolute URLs (for pulse functionality)
+        protected async Task<HttpResponseMessage> HttpGetAsync(string absoluteUrl)
+        {
+            var uri = new Uri(absoluteUrl);
+            var resp = await UpdownHttpClient.GetAsync(uri).ConfigureAwait(false);
+            resp.EnsureSuccessStatusCode();
+            return resp;
+        }
+
+        protected async Task<HttpResponseMessage> HttpPostAsync(string absoluteUrl, HttpContent content = null)
+        {
+            var uri = new Uri(absoluteUrl);
+            var resp = await UpdownHttpClient.PostAsync(uri, content).ConfigureAwait(false);
+            resp.EnsureSuccessStatusCode();
+            return resp;
+        }
     }
 }

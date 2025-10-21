@@ -24,6 +24,7 @@ The library maintains backward compatibility through:
 
 ### 4. **Multi-Target Support**
 Supports multiple target frameworks:
+- .NET 9.0
 - .NET 8.0
 - .NET 6.0
 - .NET Standard 2.0

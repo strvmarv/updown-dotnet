@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
@@ -12,7 +13,13 @@ namespace UpdownDotNetTests.StatusPages
 {
     public class StatusPageManualTests : BaseTest
     {
-        private const string ApiKey = "YOUR-API-KEY-HERE";
+        // For manual testing: Set environment variable UPDOWN_API_KEY with your API key
+        // PowerShell: $env:UPDOWN_API_KEY="your-key"
+        // Bash: export UPDOWN_API_KEY="your-key"
+        // Or replace "YOUR-API-KEY-HERE" below (but don't commit!)
+        private const string ApiKeyPlaceholder = "YOUR-API-KEY-HERE";
+        
+        private static string GetApiKey() => Environment.GetEnvironmentVariable("UPDOWN_API_KEY") ?? ApiKeyPlaceholder;
 
         private static readonly JsonSerializerOptions JsonOptions = new JsonSerializerOptions()
         {
@@ -27,9 +34,10 @@ namespace UpdownDotNetTests.StatusPages
             _logger = LoggerFactory.CreateLogger<StatusPageManualTests>();
         }
 
-        [TestCase(ApiKey), Explicit]
-        public async Task StatusPages(string apiKey)
+        [Test, Explicit]
+        public async Task StatusPages()
         {
+            var apiKey = GetApiKey();
             var client = UpdownClientFactory.Create(apiKey);
             var results = await client.StatusPages();
             var result = results.FirstOrDefault();
@@ -40,9 +48,10 @@ namespace UpdownDotNetTests.StatusPages
             Assert.That(results, Is.Not.Null);
         }
 
-        [TestCase(ApiKey), Explicit]
-        public async Task StatusPageCreateUpdateDelete(string apiKey)
+        [Test, Explicit]
+        public async Task StatusPageCreateUpdateDelete()
         {
+            var apiKey = GetApiKey();
             const string url = "https://i-am-a-test.com";
             var parameters = new StatusPageParameters
             {

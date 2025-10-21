@@ -13,7 +13,13 @@ namespace UpdownDotNetTests.Checks
 {
     public class ChecksManualTests : BaseTest
     {
-        private const string ApiKey = "YOUR-API-KEY-HERE";
+        // For manual testing: Set environment variable UPDOWN_API_KEY with your API key
+        // PowerShell: $env:UPDOWN_API_KEY="your-key"
+        // Bash: export UPDOWN_API_KEY="your-key"
+        // Or replace "YOUR-API-KEY-HERE" below (but don't commit!)
+        private const string ApiKeyPlaceholder = "YOUR-API-KEY-HERE";
+        
+        private static string GetApiKey() => Environment.GetEnvironmentVariable("UPDOWN_API_KEY") ?? ApiKeyPlaceholder;
 
         private static readonly JsonSerializerOptions JsonOptions = new JsonSerializerOptions()
         {
@@ -28,9 +34,10 @@ namespace UpdownDotNetTests.Checks
             _logger = LoggerFactory.CreateLogger<ChecksTests>();
         }
 
-        [TestCase(ApiKey), Explicit]
-        public async Task Checks(string apiKey)
+        [Test, Explicit]
+        public async Task Checks()
         {
+            var apiKey = GetApiKey();
             var client = UpdownClientFactory.Create(apiKey);
             var results = await client.Checks();
             var result = results.FirstOrDefault();
@@ -41,9 +48,10 @@ namespace UpdownDotNetTests.Checks
             Assert.That(results, Is.Not.Null);
         }
 
-        [TestCase(ApiKey), Explicit]
-        public async Task Check(string apiKey)
+        [Test, Explicit]
+        public async Task Check()
         {
+            var apiKey = GetApiKey();
             var client = UpdownClientFactory.Create(apiKey);
             var results = await client.Checks();
             var random = new Random();
@@ -59,9 +67,10 @@ namespace UpdownDotNetTests.Checks
             });
         }
 
-        [TestCase(ApiKey), Explicit]
-        public async Task CheckCreateUpdateDelete(string apiKey)
+        [Test, Explicit]
+        public async Task CheckCreateUpdateDelete()
         {
+            var apiKey = GetApiKey();
             var parameters = new CheckParameters
             {
                 Url = "https://www.radancy.com",

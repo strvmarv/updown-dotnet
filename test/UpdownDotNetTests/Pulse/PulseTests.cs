@@ -57,31 +57,31 @@ namespace UpdownDotNetTests.Pulse
         }
 
         [Test]
-        public void SendPulse_WithNullUrl_ThrowsArgumentNullException()
+        public void SendPulse_WithNullUrl_ThrowsArgumentException()
         {
             var client = UpdownClientFactory.Create(Server.CreateClient());
             
-            Assert.ThrowsAsync<ArgumentNullException>(() => client.SendPulse(null));
+            Assert.ThrowsAsync<ArgumentException>(() => client.SendPulse(null!));
         }
 
         [Test]
-        public void SendPulse_WithEmptyUrl_ThrowsArgumentNullException()
+        public void SendPulse_WithEmptyUrl_ThrowsArgumentException()
         {
             var client = UpdownClientFactory.Create(Server.CreateClient());
             
-            Assert.ThrowsAsync<ArgumentNullException>(() => client.SendPulse(""));
+            Assert.ThrowsAsync<ArgumentException>(() => client.SendPulse(""));
         }
 
         [Test]
-        public void SendPulse_WithWhitespaceUrl_ThrowsArgumentNullException()
+        public void SendPulse_WithWhitespaceUrl_ThrowsArgumentException()
         {
             var client = UpdownClientFactory.Create(Server.CreateClient());
             
-            Assert.ThrowsAsync<ArgumentNullException>(() => client.SendPulse("   "));
+            Assert.ThrowsAsync<ArgumentException>(() => client.SendPulse("   "));
         }
 
         [Test]
-        public void SendPulse_WithInvalidUrl_ThrowsHttpRequestException()
+        public void SendPulse_WithInvalidUrl_ThrowsUpdownNotFoundException()
         {
             // Use the mock server URL instead of updown.io
             var pulseUrl = $"{Server.Url}/p/invalid-token";
@@ -95,7 +95,7 @@ namespace UpdownDotNetTests.Pulse
 
             var client = UpdownClientFactory.Create(Server.CreateClient());
             
-            Assert.ThrowsAsync<HttpRequestException>(() => client.SendPulse(pulseUrl));
+            Assert.ThrowsAsync<UpdownDotnet.Exceptions.UpdownNotFoundException>(() => client.SendPulse(pulseUrl));
         }
 
         [Test]

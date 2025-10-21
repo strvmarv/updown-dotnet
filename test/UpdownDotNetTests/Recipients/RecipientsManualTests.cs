@@ -12,7 +12,13 @@ namespace UpdownDotNetTests.Recipients
 {
     public class RecipientsManualTests : BaseTest
     {
-        private const string ApiKey = "YOUR-API-KEY-HERE";
+        // For manual testing: Set environment variable UPDOWN_API_KEY with your API key
+        // PowerShell: $env:UPDOWN_API_KEY="your-key"
+        // Bash: export UPDOWN_API_KEY="your-key"
+        // Or replace "YOUR-API-KEY-HERE" below (but don't commit!)
+        private const string ApiKeyPlaceholder = "YOUR-API-KEY-HERE";
+        
+        private static string GetApiKey() => Environment.GetEnvironmentVariable("UPDOWN_API_KEY") ?? ApiKeyPlaceholder;
 
         private static readonly JsonSerializerOptions JsonOptions = new JsonSerializerOptions()
         {
@@ -27,9 +33,10 @@ namespace UpdownDotNetTests.Recipients
             _logger = LoggerFactory.CreateLogger<RecipientsManualTests>();
         }
 
-        [TestCase(ApiKey), Explicit]
-        public async Task Recipients(string apiKey)
+        [Test, Explicit]
+        public async Task Recipients()
         {
+            var apiKey = GetApiKey();
             var client = UpdownClientFactory.Create(apiKey);
             var results = await client.Recipients();
             var result = results.FirstOrDefault();
@@ -40,9 +47,10 @@ namespace UpdownDotNetTests.Recipients
             Assert.That(results, Is.Not.Null);
         }
 
-        [TestCase(ApiKey), Explicit]
-        public async Task RecipientCreateDelete(string apiKey)
+        [Test, Explicit]
+        public async Task RecipientCreateDelete()
         {
+            var apiKey = GetApiKey();
             var parameters = new RecipientParameters
             {
                 Name = "Test",

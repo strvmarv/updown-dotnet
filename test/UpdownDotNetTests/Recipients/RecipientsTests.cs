@@ -79,7 +79,7 @@ namespace UpdownDotNetTests.Recipients
         }
 
         [Test]
-        public void RecipientCreateNotFound()
+        public void RecipientCreateNotFound_ThrowsUpdownNotFoundException()
         {
             var mockParameters = new RecipientParameters
             {
@@ -95,7 +95,7 @@ namespace UpdownDotNetTests.Recipients
                     .WithNotFound());
 
             var client = UpdownClientFactory.Create(Server.CreateClient());
-            Assert.ThrowsAsync<HttpRequestException>(() => client.RecipientCreate(mockParameters));
+            Assert.ThrowsAsync<UpdownDotnet.Exceptions.UpdownNotFoundException>(() => client.RecipientCreate(mockParameters));
         }
 
         [Test]
@@ -122,7 +122,7 @@ namespace UpdownDotNetTests.Recipients
         }
 
         [Test]
-        public void RecipientDeleteNotFound()
+        public void RecipientDeleteNotFound_ThrowsUpdownNotFoundException()
         {
             var mockInput = new Recipient
             {
@@ -137,7 +137,7 @@ namespace UpdownDotNetTests.Recipients
                     .WithNotFound());
 
             var client = UpdownClientFactory.Create(Server.CreateClient());
-            Assert.ThrowsAsync<HttpRequestException>(() => client.RecipientDelete(mockInput.Id));
+            Assert.ThrowsAsync<UpdownDotnet.Exceptions.UpdownNotFoundException>(() => client.RecipientDelete(mockInput.Id!));
         }
     }
 }

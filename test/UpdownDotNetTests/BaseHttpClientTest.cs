@@ -4,13 +4,23 @@ using WireMock.Server;
 
 namespace UpdownDotNetTests
 {
+    /// <summary>
+    /// Base class for tests that require HTTP mocking with WireMock.
+    /// </summary>
     public class BaseHttpClientTest : BaseTest, IDisposable
     {
         private readonly ILogger _logger;
-
+        
+        /// <summary>
+        /// Gets the WireMock server instance for mocking HTTP responses.
+        /// </summary>
         protected readonly WireMockServer Server;
+        
         private bool _disposedValue;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BaseHttpClientTest"/> class.
+        /// </summary>
         public BaseHttpClientTest()
         {
             _logger = LoggerFactory.CreateLogger<BaseHttpClientTest>();
@@ -18,35 +28,29 @@ namespace UpdownDotNetTests
             Server = WireMockServer.Start();
         }
 
-        // ReSharper disable once FlagArgument
+        /// <summary>
+        /// Disposes the test resources.
+        /// </summary>
+        /// <param name="disposing">True if disposing managed resources.</param>
         protected virtual void Dispose(bool disposing)
         {
-            _logger.LogDebug("Server Stop");
-            Server.Stop();
-
             if (!_disposedValue)
             {
                 if (disposing)
                 {
-                    // TODO: dispose managed state (managed objects)
+                    _logger.LogDebug("Server Stop");
+                    Server.Stop();
                 }
 
-                // TODO: free unmanaged resources (unmanaged objects) and override finalizer
-                // TODO: set large fields to null
                 _disposedValue = true;
             }
         }
 
-        // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
-        // ~BaseHttpClientTest()
-        // {
-        //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
-        //     Dispose(disposing: false);
-        // }
-
+        /// <summary>
+        /// Disposes the test resources.
+        /// </summary>
         public void Dispose()
         {
-            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }

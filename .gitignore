@@ -396,3 +396,18 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Secrets and API Keys
+*.env
+*.env.local
+*secrets.json
+*secrets*.json
+appsettings.Development.json
+appsettings.Local.json
+TestConfiguration.json
+TestSettings.json
+
+# Manual test configuration (if using external config)
+test/**/*Configuration.json
+test/**/*Settings.json
+!test/**/*Settings.Example.json

@@ -1,14 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0;net6.0;netstandard2.0</TargetFrameworks>
+		<TargetFrameworks>net9.0;net8.0;net6.0;netstandard2.0</TargetFrameworks>
 		<ImplicitUsings>disable</ImplicitUsings>
-		<Nullable>disable</Nullable>
+		<Nullable>enable</Nullable>
+		<LangVersion>9.0</LangVersion>
 
 		<DebugType>embedded</DebugType>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<PackageId>UpdownDotnet</PackageId>
-		<PackageVersion>1.1.0</PackageVersion>
+		<PackageVersion>2.0.0-rc.1</PackageVersion>
 		<Authors>strvmarv</Authors>
 		<Description>A simple Updown.io REST API client for .NET</Description>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -17,9 +18,10 @@
 		<PackageTags>updown monitoring rest api</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageReleaseNotes>
-			pulse added
+			Major improvements: .NET 9 support, nullable reference types, better error handling, improved API design, comprehensive documentation, new API endpoints (Downtimes, Metrics, Nodes)
 		</PackageReleaseNotes>
-                <EmbedAllSources>True</EmbedAllSources>
+		<EmbedAllSources>True</EmbedAllSources>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">

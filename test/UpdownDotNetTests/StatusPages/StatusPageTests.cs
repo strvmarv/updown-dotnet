@@ -86,7 +86,7 @@ namespace UpdownDotNetTests.StatusPages
                     .WithNotFound());
 
             var client = UpdownClientFactory.Create(Server.CreateClient());
-            Assert.ThrowsAsync<HttpRequestException>(() => client.StatusPageCreate(mockParameters));
+            Assert.ThrowsAsync<UpdownDotnet.Exceptions.UpdownNotFoundException>(() => client.StatusPageCreate(mockParameters));
         }
 
         [Test]
@@ -122,7 +122,7 @@ namespace UpdownDotNetTests.StatusPages
                     .WithNotFound());
 
             var client = UpdownClientFactory.Create(Server.CreateClient());
-            Assert.ThrowsAsync<HttpRequestException>(() => client.StatusPageDelete(mockInput.Token));
+            Assert.ThrowsAsync<UpdownDotnet.Exceptions.UpdownNotFoundException>(() => client.StatusPageDelete(mockInput.Token!));
         }
 
         [Test]
@@ -159,7 +159,7 @@ namespace UpdownDotNetTests.StatusPages
 
             var client = UpdownClientFactory.Create(Server.CreateClient());
 
-            Assert.ThrowsAsync<HttpRequestException>(() => client.StatusPageUpdate("token", mockParameters));
+            Assert.ThrowsAsync<UpdownDotnet.Exceptions.UpdownNotFoundException>(() => client.StatusPageUpdate("token", mockParameters));
         }
     }
 }

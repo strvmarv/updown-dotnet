@@ -73,7 +73,7 @@ namespace UpdownDotNetTests.Checks
         }
 
         [Test]
-        public void CheckNotFound()
+        public void CheckNotFound_ThrowsUpdownNotFoundException()
         {
             var mockInput = new Check { Token = "token", Url = "https://i-am-a-test.com" };
 
@@ -85,7 +85,7 @@ namespace UpdownDotNetTests.Checks
 
             var client = UpdownClientFactory.Create(Server.CreateClient());
 
-            Assert.ThrowsAsync<HttpRequestException>(() => client.Check(mockInput.Token));
+            Assert.ThrowsAsync<UpdownDotnet.Exceptions.UpdownNotFoundException>(() => client.Check(mockInput.Token));
         }
 
         [Test]
@@ -113,7 +113,7 @@ namespace UpdownDotNetTests.Checks
         }
 
         [Test]
-        public void CheckCreateNotFound()
+        public void CheckCreateNotFound_ThrowsUpdownNotFoundException()
         {
             var mockParameters = new CheckParameters { Url = "https://i-am-a-test.com" };
 
@@ -124,7 +124,7 @@ namespace UpdownDotNetTests.Checks
                     .WithNotFound());
 
             var client = UpdownClientFactory.Create(Server.CreateClient());
-            Assert.ThrowsAsync<HttpRequestException>(() => client.CheckCreate(mockParameters));
+            Assert.ThrowsAsync<UpdownDotnet.Exceptions.UpdownNotFoundException>(() => client.CheckCreate(mockParameters));
         }
 
         [Test]
@@ -148,7 +148,7 @@ namespace UpdownDotNetTests.Checks
         }
 
         [Test]
-        public void CheckDeleteNotFound()
+        public void CheckDeleteNotFound_ThrowsUpdownNotFoundException()
         {
             var mockInput = new Check { Token = "token", Url = "https://i-am-a-test.com" };
 
@@ -160,7 +160,7 @@ namespace UpdownDotNetTests.Checks
                     .WithNotFound());
 
             var client = UpdownClientFactory.Create(Server.CreateClient());
-            Assert.ThrowsAsync<HttpRequestException>(() => client.CheckDelete(mockInput.Token));
+            Assert.ThrowsAsync<UpdownDotnet.Exceptions.UpdownNotFoundException>(() => client.CheckDelete(mockInput.Token));
         }
 
         [Test]
@@ -184,7 +184,7 @@ namespace UpdownDotNetTests.Checks
         }
 
         [Test]
-        public void CheckUpdateNotFound()
+        public void CheckUpdateNotFound_ThrowsUpdownNotFoundException()
         {
             var mockParameters = new CheckParameters { Url = "https://i-am-a-test.com" };
 
@@ -197,7 +197,7 @@ namespace UpdownDotNetTests.Checks
 
             var client = UpdownClientFactory.Create(Server.CreateClient());
 
-            Assert.ThrowsAsync<HttpRequestException>(() => client.CheckUpdate("token", mockParameters));
+            Assert.ThrowsAsync<UpdownDotnet.Exceptions.UpdownNotFoundException>(() => client.CheckUpdate("token", mockParameters));
         }
     }
 }

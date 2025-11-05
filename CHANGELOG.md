@@ -5,7 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.0-rc.1] - 2025-10-21
+## [2.0.0-rc.2] - 2025-11-05
+
+**Release Candidate 2** - This pre-release version includes dependency updates and continues to be feature-complete and ready for testing. Please report any issues before the final 2.0.0 release.
+
+### Changed
+
+#### Dependency Updates
+- **System.Text.Json** - Updated from 9.0.6 to 9.0.10
+  - Latest security patches and bug fixes
+  - Improved JSON serialization performance
+  
+- **NUnit3TestAdapter** - Updated from 5.1.0 to 5.2.0 (test dependency)
+  - Enhanced test discovery and execution
+  - Better compatibility with latest .NET versions
+  
+- **WireMock.Net** - Updated from 1.8.0 to 1.15.0 (test dependency)
+  - Improved HTTP mocking capabilities
+  - Better support for modern .NET features
+
+### Fixed
+
+- All 147 tests pass successfully across all target frameworks (net9.0, net8.0, net6.0, netstandard2.0)
+
+---
+
+## [2.0.0-rc.1] - 2025-01-10
 
 **Release Candidate** - This pre-release version is feature-complete and ready for testing. Please report any issues before the final 2.0.0 release.
 
@@ -348,6 +373,7 @@ For questions, issues, or contributions, please visit:
 
 ---
 
+[2.0.0-rc.2]: https://github.com/strvmarv/updown-dotnet/compare/v2.0.0-rc.1...v2.0.0-rc.2
 [2.0.0-rc.1]: https://github.com/strvmarv/updown-dotnet/compare/v1.1.0...v2.0.0-rc.1
 [1.1.0]: https://github.com/strvmarv/updown-dotnet/releases/tag/v1.1.0
 

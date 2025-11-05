@@ -9,7 +9,7 @@
 		<DebugType>embedded</DebugType>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<PackageId>UpdownDotnet</PackageId>
-		<PackageVersion>2.0.0-rc.1</PackageVersion>
+		<PackageVersion>2.0.0-rc.2</PackageVersion>
 		<Authors>strvmarv</Authors>
 		<Description>A simple Updown.io REST API client for .NET</Description>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -18,7 +18,7 @@
 		<PackageTags>updown monitoring rest api</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageReleaseNotes>
-			Major improvements: .NET 9 support, nullable reference types, better error handling, improved API design, comprehensive documentation, new API endpoints (Downtimes, Metrics, Nodes)
+			RC2: Dependency updates (System.Text.Json 9.0.10, NUnit3TestAdapter 5.2.0, WireMock.Net 1.15.0). Major improvements: .NET 9 support, nullable reference types, better error handling, improved API design, comprehensive documentation, new API endpoints (Downtimes, Metrics, Nodes)
 		</PackageReleaseNotes>
 		<EmbedAllSources>True</EmbedAllSources>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>

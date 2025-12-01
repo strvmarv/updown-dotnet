@@ -5,43 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.0-rc.2] - 2025-11-05
+## [2.0.0] - 2025-12-01
 
-**Release Candidate 2** - This pre-release version includes dependency updates and continues to be feature-complete and ready for testing. Please report any issues before the final 2.0.0 release.
-
-### Changed
-
-#### Dependency Updates
-- **System.Text.Json** - Updated from 9.0.6 to 9.0.10
-  - Latest security patches and bug fixes
-  - Improved JSON serialization performance
-  
-- **NUnit3TestAdapter** - Updated from 5.1.0 to 5.2.0 (test dependency)
-  - Enhanced test discovery and execution
-  - Better compatibility with latest .NET versions
-  
-- **WireMock.Net** - Updated from 1.8.0 to 1.15.0 (test dependency)
-  - Improved HTTP mocking capabilities
-  - Better support for modern .NET features
-
-### Fixed
-
-- All 147 tests pass successfully across all target frameworks (net9.0, net8.0, net6.0, netstandard2.0)
-
----
-
-## [2.0.0-rc.1] - 2025-01-10
-
-**Release Candidate** - This pre-release version is feature-complete and ready for testing. Please report any issues before the final 2.0.0 release.
-
-This major release represents a comprehensive modernization of the Updown.io .NET Client with significant improvements to code quality, API design, documentation, and testing. While breaking changes are minimal due to backward compatibility measures, this is marked as a major version to signal the substantial enhancements and the deprecation of older patterns.
+**Stable Release** - This major release represents a comprehensive modernization of the Updown.io .NET Client with significant improvements to code quality, API design, documentation, and testing. While breaking changes are minimal due to backward compatibility measures, this is marked as a major version to signal the substantial enhancements and the deprecation of older patterns.
 
 ### Added
 
 #### .NET 9 Support
 - Added `net9.0` as a target framework
 - Library now supports .NET 9, .NET 8, .NET 6, and .NET Standard 2.0
-- All 49 tests pass on all target frameworks
+- All 147 tests pass on all target frameworks
 
 #### New API Endpoints
 - **Downtimes API** (`ApiDowntimes.cs`)
@@ -177,6 +150,19 @@ This major release represents a comprehensive modernization of the Updown.io .NE
 - **Common Response Models** (`Models/Responses.cs`)
   - `DeleteResponse` - Standardized delete operation response
 
+#### Dependency Updates
+- **System.Text.Json** - Updated to 9.0.10
+  - Latest security patches and bug fixes
+  - Improved JSON serialization performance
+  
+- **NUnit3TestAdapter** - Updated to 5.2.0 (test dependency)
+  - Enhanced test discovery and execution
+  - Better compatibility with latest .NET versions
+  
+- **WireMock.Net** - Updated to 1.15.0 (test dependency)
+  - Improved HTTP mocking capabilities
+  - Better support for modern .NET features
+
 ### Changed
 
 #### Breaking Changes (Mitigated with Deprecation)
@@ -256,6 +242,31 @@ This major release represents a comprehensive modernization of the Updown.io .NE
 - Optimized HttpClient usage with connection pooling
 - Reduced memory allocations with better async patterns
 - Improved JSON serialization performance with System.Text.Json
+
+---
+
+## [2.0.0-rc.2] - 2025-11-05
+
+**Release Candidate 2** - This pre-release version includes dependency updates and continues to be feature-complete and ready for testing.
+
+### Changed
+
+#### Dependency Updates
+- **System.Text.Json** - Updated from 9.0.6 to 9.0.10
+- **NUnit3TestAdapter** - Updated from 5.1.0 to 5.2.0 (test dependency)
+- **WireMock.Net** - Updated from 1.8.0 to 1.15.0 (test dependency)
+
+### Fixed
+
+- All 147 tests pass successfully across all target frameworks (net9.0, net8.0, net6.0, netstandard2.0)
+
+---
+
+## [2.0.0-rc.1] - 2025-01-10
+
+**Release Candidate** - This pre-release version is feature-complete and ready for testing.
+
+Initial release candidate with all major features for 2.0.0.
 
 ---
 
@@ -373,6 +384,7 @@ For questions, issues, or contributions, please visit:
 
 ---
 
+[2.0.0]: https://github.com/strvmarv/updown-dotnet/compare/v1.1.0...v2.0.0
 [2.0.0-rc.2]: https://github.com/strvmarv/updown-dotnet/compare/v2.0.0-rc.1...v2.0.0-rc.2
 [2.0.0-rc.1]: https://github.com/strvmarv/updown-dotnet/compare/v1.1.0...v2.0.0-rc.1
 [1.1.0]: https://github.com/strvmarv/updown-dotnet/releases/tag/v1.1.0

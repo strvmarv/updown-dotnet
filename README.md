@@ -1,4 +1,4 @@
-[![build and test](https://github.com/strvmarv/updown-dotnet/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/strvmarv/updown-dotnet/actions/workflows/build-and-test.yml)
+[![CI](https://github.com/strvmarv/updown-dotnet/actions/workflows/ci.yml/badge.svg)](https://github.com/strvmarv/updown-dotnet/actions/workflows/ci.yml)
 
 # updown-dotnet
 A simple, modern [Updown.io](https://updown.io) .NET Client

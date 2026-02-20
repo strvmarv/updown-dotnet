@@ -1,22 +1,15 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+## [2.1.0](https://github.com/strvmarv/updown-dotnet/compare/v2.0.1...v2.1.0) (2026-02-20)
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
-## [2.1.0] - 2026-02-20
-
-### Added
+### Features
 
 - Added `net10.0` as an explicit target framework
 - Library now supports .NET 10, .NET 9, .NET 8, .NET 6, and .NET Standard 2.0
 
----
+## [2.0.1](https://github.com/strvmarv/updown-dotnet/compare/v2.0.0...v2.0.1) (2026-02-20)
 
-## [2.0.1] - 2026-02-20
-
-### Changed
+### Miscellaneous Chores
 
 #### Dependency Updates
 - **System.Text.Json** - Updated to 10.0.1 (net6.0 and netstandard2.0 targets)
@@ -25,13 +18,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **NUnit3TestAdapter** - Updated to 6.0.0 (test dependency)
 - **WireMock.Net** - Updated to 1.21.0 (test dependency)
 
----
-
-## [2.0.0] - 2025-12-01
+## [2.0.0](https://github.com/strvmarv/updown-dotnet/compare/v1.1.0...v2.0.0) (2025-12-01)
 
 **Stable Release** - This major release represents a comprehensive modernization of the Updown.io .NET Client with significant improvements to code quality, API design, documentation, and testing. While breaking changes are minimal due to backward compatibility measures, this is marked as a major version to signal the substantial enhancements and the deprecation of older patterns.
 
-### Added
+### Features
 
 #### .NET 9 Support
 - Added `net9.0` as a target framework
@@ -124,18 +115,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Protection for `*.env`, `*.env.local`, `*secrets.json` files
   - Test configuration files exclusion
   - Development/local settings protection
-  
+
 - **Security Documentation** (`SECURITY.md`)
   - Updated with comprehensive API key security best practices
   - Secure code examples (environment variables, User Secrets, Key Vault)
   - Vulnerability reporting process
   - Supported versions clearly stated
   - DO/DON'T guidelines for contributors and users
-  
+
 - **Environment Variable Template** (`.env.example`)
   - Safe template for local development configuration
   - Clear warnings about not committing secrets
-  
+
 - **Test Documentation** (`test/UpdownDotNetTests/README.md`)
   - Comprehensive testing guide
   - Security best practices for manual testing
@@ -176,16 +167,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **System.Text.Json** - Updated to 9.0.10
   - Latest security patches and bug fixes
   - Improved JSON serialization performance
-  
+
 - **NUnit3TestAdapter** - Updated to 5.2.0 (test dependency)
   - Enhanced test discovery and execution
   - Better compatibility with latest .NET versions
-  
+
 - **WireMock.Net** - Updated to 1.15.0 (test dependency)
   - Improved HTTP mocking capabilities
   - Better support for modern .NET features
 
-### Changed
+### Miscellaneous Chores
 
 #### Breaking Changes (Mitigated with Deprecation)
 - **Language Version** - Updated to C# 9.0 (`<LangVersion>9.0</LangVersion>`) to support nullable reference types across all target frameworks
@@ -235,7 +226,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `Downtime`: `Started_At`, `Ended_At`
   - `Metric`: `Apdex_T`, `Error_Rate`, `Response_Time`
 
-### Fixed
+### Bug Fixes
 
 - **netstandard2.0 Compatibility**
   - Replaced `HttpStatusCode.TooManyRequests` with `(HttpStatusCode)429` for netstandard2.0 compatibility
@@ -265,34 +256,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Reduced memory allocations with better async patterns
 - Improved JSON serialization performance with System.Text.Json
 
----
-
-## [2.0.0-rc.2] - 2025-11-05
+## [2.0.0-rc.2](https://github.com/strvmarv/updown-dotnet/compare/v2.0.0-rc.1...v2.0.0-rc.2) (2025-11-05)
 
 **Release Candidate 2** - This pre-release version includes dependency updates and continues to be feature-complete and ready for testing.
 
-### Changed
+### Miscellaneous Chores
 
 #### Dependency Updates
 - **System.Text.Json** - Updated from 9.0.6 to 9.0.10
 - **NUnit3TestAdapter** - Updated from 5.1.0 to 5.2.0 (test dependency)
 - **WireMock.Net** - Updated from 1.8.0 to 1.15.0 (test dependency)
 
-### Fixed
+### Bug Fixes
 
 - All 147 tests pass successfully across all target frameworks (net9.0, net8.0, net6.0, netstandard2.0)
 
----
-
-## [2.0.0-rc.1] - 2025-01-10
+## [2.0.0-rc.1](https://github.com/strvmarv/updown-dotnet/compare/v1.1.0...v2.0.0-rc.1) (2025-01-10)
 
 **Release Candidate** - This pre-release version is feature-complete and ready for testing.
 
 Initial release candidate with all major features for 2.0.0.
 
----
-
-## [1.1.0] - Previous Release
+## [1.1.0](https://github.com/strvmarv/updown-dotnet/releases/tag/v1.1.0)
 
 ### Features
 - Initial implementation of Checks API
@@ -305,111 +290,3 @@ Initial release candidate with all major features for 2.0.0.
 - .NET 8.0
 - .NET 6.0
 - .NET Standard 2.0
-
----
-
-## Migration Guide
-
-### Migrating from 1.x to 2.0
-
-#### Using the New Builder Pattern (Recommended)
-```csharp
-// Old way (still works but deprecated)
-var client = UpdownClientFactory.Create("your-api-key");
-
-// New way (recommended)
-var client = new UpdownClientBuilder()
-    .WithApiKey("your-api-key")
-    .WithTimeout(TimeSpan.FromSeconds(30))
-    .Build();
-```
-
-#### Using Async Methods
-```csharp
-// Old way (still works but deprecated)
-var checks = client.Checks();
-
-// New way (recommended)
-var checks = await client.ChecksAsync();
-
-// With cancellation token
-var cts = new CancellationTokenSource();
-var checks = await client.ChecksAsync(cts.Token);
-```
-
-#### Using PascalCase Properties
-```csharp
-// Old way (still works but deprecated)
-var lastStatus = check.Last_Status;
-
-// New way (recommended)
-var lastStatus = check.LastStatus;
-```
-
-#### Handling Specific Exceptions
-```csharp
-// Old way
-try
-{
-    var check = await client.CheckAsync("token");
-}
-catch (HttpRequestException ex)
-{
-    // Generic error handling
-}
-
-// New way
-try
-{
-    var check = await client.CheckAsync("token");
-}
-catch (UpdownNotFoundException ex)
-{
-    // Handle 404 - check not found
-}
-catch (UpdownRateLimitException ex)
-{
-    // Handle 429 - rate limit exceeded
-    await Task.Delay(TimeSpan.FromSeconds(ex.RetryAfterSeconds ?? 60));
-}
-catch (UpdownUnauthorizedException ex)
-{
-    // Handle 401 - invalid API key
-}
-catch (UpdownApiException ex)
-{
-    // Handle other API errors
-}
-```
-
-### Compiler Warnings
-
-After upgrading to 2.0, you may see `CS0618` warnings about obsolete members. These are intentional and indicate areas where you should migrate to the new API patterns. The old methods will continue to work but may be removed in a future major version.
-
-To suppress these warnings temporarily while you migrate:
-```xml
-<PropertyGroup>
-    <NoWarn>$(NoWarn);CS0618</NoWarn>
-</PropertyGroup>
-```
-
-However, we recommend migrating your code to use the new patterns as soon as possible.
-
----
-
-## Support
-
-For questions, issues, or contributions, please visit:
-- **GitHub Repository**: https://github.com/strvmarv/updown-dotnet
-- **Issue Tracker**: https://github.com/strvmarv/updown-dotnet/issues
-- **Documentation**: See `/docs` folder for detailed documentation
-
----
-
-[2.1.0]: https://github.com/strvmarv/updown-dotnet/compare/v2.0.1...v2.1.0
-[2.0.1]: https://github.com/strvmarv/updown-dotnet/compare/v2.0.0...v2.0.1
-[2.0.0]: https://github.com/strvmarv/updown-dotnet/compare/v1.1.0...v2.0.0
-[2.0.0-rc.2]: https://github.com/strvmarv/updown-dotnet/compare/v2.0.0-rc.1...v2.0.0-rc.2
-[2.0.0-rc.1]: https://github.com/strvmarv/updown-dotnet/compare/v1.1.0...v2.0.0-rc.1
-[1.1.0]: https://github.com/strvmarv/updown-dotnet/releases/tag/v1.1.0
-

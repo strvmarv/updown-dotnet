@@ -411,3 +411,4 @@ TestSettings.json
 test/**/*Configuration.json
 test/**/*Settings.json
 !test/**/*Settings.Example.json
+settings.local.json

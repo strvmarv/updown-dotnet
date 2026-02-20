@@ -1,4 +1,4 @@
-[![build and test](https://github.com/strvmarv/updown-dotnet/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/strvmarv/updown-dotnet/actions/workflows/build-and-test.yml)
+[![CI](https://github.com/strvmarv/updown-dotnet/actions/workflows/ci.yml/badge.svg)](https://github.com/strvmarv/updown-dotnet/actions/workflows/ci.yml)
 
 # updown-dotnet
 A simple, modern [Updown.io](https://updown.io) .NET Client
@@ -13,7 +13,7 @@ Don't currently utilize Updown.IO?  Join here --> https://updown.io/r/WioVu
 - ✅ **Modern Async/Await**: All methods support async patterns with `CancellationToken`
 - ✅ **Custom Exceptions**: Specific exception types for better error handling
 - ✅ **Nullable Reference Types**: Full nullability annotations for safer code
-- ✅ **Multi-Targeting**: Supports .NET 9, .NET 8, .NET 6, and .NET Standard 2.0
+- ✅ **Multi-Targeting**: Supports .NET 10, .NET 9, .NET 8, and .NET Standard 2.0
 - ✅ **Comprehensive Testing**: 49+ unit tests with 100% pass rate
 - ✅ **XML Documentation**: Full IntelliSense support
 

@@ -286,10 +286,10 @@ dotnet build /warnaserror
 
 ### Commit Messages
 
-Write clear, concise commit messages:
+This project uses [Conventional Commits](https://www.conventionalcommits.org/) for automated versioning and changelog generation:
 
 ```
-Short summary (50 chars or less)
+feat: add webhook support
 
 Longer explanation if needed. Wrap at 72 characters.
 Explain the problem this commit solves and why you
@@ -299,11 +299,12 @@ Fixes #123
 ```
 
 **Commit Message Guidelines**:
-- Use present tense ("Add feature" not "Added feature")
-- Use imperative mood ("Move cursor to..." not "Moves cursor to...")
-- First line should be capitalized
+- Use Conventional Commit prefixes: `feat:`, `fix:`, `chore:`, `docs:`, `refactor:`, `test:`
+- Use present tense ("add feature" not "added feature")
+- Use imperative mood ("move cursor to..." not "moves cursor to...")
 - No period at the end of the summary line
 - Reference issues and pull requests
+- Add `BREAKING CHANGE:` footer or `!` after type for breaking changes
 
 ### Pull Request Template
 
@@ -339,14 +340,20 @@ Follow [Semantic Versioning](https://semver.org/):
 
 ### Release Checklist
 
-1. Update version in `src/UpdownDotnet.csproj`
-2. Update `PackageReleaseNotes`
-3. Update README.md if needed
-4. Create git tag: `git tag v1.x.x`
-5. Push tag: `git push origin v1.x.x`
-6. Build NuGet package: `dotnet pack -c Release`
-7. Push to NuGet.org
-8. Create GitHub release
+1. Ensure PRs are merged to `main` with [Conventional Commit](https://www.conventionalcommits.org/) messages
+2. release-please automatically creates/updates a Release PR with version bump and changelog
+3. Review the Release PR — adjust changelog text if needed
+4. Merge the Release PR
+5. Automated: git tag, GitHub Release, and NuGet package are all created automatically
+
+### Conventional Commit Format
+
+- `feat: description` — new feature (bumps minor version)
+- `fix: description` — bug fix (bumps patch version)
+- `feat!: description` or footer `BREAKING CHANGE:` — breaking change (bumps major version)
+- `chore: description` — maintenance (included in next release, no version bump on its own)
+- `docs: description` — documentation only
+- Use `Release-As: X.Y.Z` in commit body to force a specific version
 
 ## Development Tips
 

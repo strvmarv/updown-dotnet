@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.2.0](https://github.com/strvmarv/updown-dotnet/compare/UpdownDotnet-v2.1.0...UpdownDotnet-v2.2.0) (2026-02-20)
+
+
+### Features
+
+* automate releases with release-please ([fce5355](https://github.com/strvmarv/updown-dotnet/commit/fce5355c33c40b73277be0c7b37deec3954cd8f1))
+
+
+### Bug Fixes
+
+* use !cancelled() instead of always() in publish job condition ([7289040](https://github.com/strvmarv/updown-dotnet/commit/72890408c999957e19208778d649649bbb87686c))
+
 ## [2.1.0](https://github.com/strvmarv/updown-dotnet/compare/v2.0.1...v2.1.0) (2026-02-20)
 
 ### Features

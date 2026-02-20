@@ -5,7 +5,8 @@
 ### Features
 
 - Added `net10.0` as an explicit target framework
-- Library now supports .NET 10, .NET 9, .NET 8, .NET 6, and .NET Standard 2.0
+- Dropped `net6.0` target framework (EOL)
+- Library now supports .NET 10, .NET 9, .NET 8, and .NET Standard 2.0
 
 ## [2.0.1](https://github.com/strvmarv/updown-dotnet/compare/v2.0.0...v2.0.1) (2026-02-20)
 

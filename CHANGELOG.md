@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2026-02-20
+
+### Added
+
+- Added `net10.0` as an explicit target framework
+- Library now supports .NET 10, .NET 9, .NET 8, .NET 6, and .NET Standard 2.0
+
+---
+
 ## [2.0.1] - 2026-02-20
 
 ### Changed
@@ -397,6 +406,7 @@ For questions, issues, or contributions, please visit:
 
 ---
 
+[2.1.0]: https://github.com/strvmarv/updown-dotnet/compare/v2.0.1...v2.1.0
 [2.0.1]: https://github.com/strvmarv/updown-dotnet/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/strvmarv/updown-dotnet/compare/v1.1.0...v2.0.0
 [2.0.0-rc.2]: https://github.com/strvmarv/updown-dotnet/compare/v2.0.0-rc.1...v2.0.0-rc.2

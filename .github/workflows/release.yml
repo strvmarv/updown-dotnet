@@ -27,7 +27,7 @@ jobs:
   publish:
     needs: release-please
     if: |
-      always() &&
+      !cancelled() &&
       (needs.release-please.outputs.release_created == 'true' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-22.04
     steps:

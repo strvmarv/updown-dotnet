@@ -298,7 +298,7 @@ var checks = await client.ChecksAsync();  // Async suffix
 var check = await client.CheckAsync("token");
 ```
 
-For full migration details, see the [CHANGELOG](CHANGELOG.md).
+For full migration details, see the [CHANGELOG](https://github.com/strvmarv/updown-dotnet/blob/main/CHANGELOG.md).
 
 ## Best Practices
 
@@ -364,7 +364,7 @@ dotnet test
 
 - [API Reference](docs/API_REFERENCE.md) - Complete API documentation
 - [Architecture](docs/ARCHITECTURE.md) - Design and architecture details  
-- [CHANGELOG](CHANGELOG.md) - Version history and migration guides
+- [CHANGELOG](https://github.com/strvmarv/updown-dotnet/blob/main/CHANGELOG.md) - Version history and migration guides
 - [Updown.io API Docs](https://updown.io/api) - Official API documentation
 
 ## License

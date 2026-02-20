@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.1] - 2026-02-20
+
+### Changed
+
+#### Dependency Updates
+- **System.Text.Json** - Updated to 10.0.1 (net6.0 and netstandard2.0 targets)
+- **FsCheck.NUnit** - Updated to 3.3.2 (test dependency)
+- **NUnit.Analyzers** - Updated to 4.11.2 (test dependency)
+- **NUnit3TestAdapter** - Updated to 6.0.0 (test dependency)
+- **WireMock.Net** - Updated to 1.21.0 (test dependency)
+
+---
+
 ## [2.0.0] - 2025-12-01
 
 **Stable Release** - This major release represents a comprehensive modernization of the Updown.io .NET Client with significant improvements to code quality, API design, documentation, and testing. While breaking changes are minimal due to backward compatibility measures, this is marked as a major version to signal the substantial enhancements and the deprecation of older patterns.
@@ -384,6 +397,7 @@ For questions, issues, or contributions, please visit:
 
 ---
 
+[2.0.1]: https://github.com/strvmarv/updown-dotnet/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/strvmarv/updown-dotnet/compare/v1.1.0...v2.0.0
 [2.0.0-rc.2]: https://github.com/strvmarv/updown-dotnet/compare/v2.0.0-rc.1...v2.0.0-rc.2
 [2.0.0-rc.1]: https://github.com/strvmarv/updown-dotnet/compare/v1.1.0...v2.0.0-rc.1

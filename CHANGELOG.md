@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.1](https://github.com/strvmarv/updown-dotnet/compare/UpdownDotnet-v2.2.0...UpdownDotnet-v2.2.1) (2026-02-20)
+
+
+### Bug Fixes
+
+* broken CHANGELOG links in NuGet README ([02497c6](https://github.com/strvmarv/updown-dotnet/commit/02497c63ddf54751887aa1eaaa77218b25567af2))
+
 ## [2.2.0](https://github.com/strvmarv/updown-dotnet/compare/UpdownDotnet-v2.1.0...UpdownDotnet-v2.2.0) (2026-02-20)
 
 

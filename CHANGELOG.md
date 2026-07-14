@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.2](https://github.com/strvmarv/updown-dotnet/compare/UpdownDotnet-v2.2.1...UpdownDotnet-v2.2.2) (2026-07-14)
+
+
+### Bug Fixes
+
+* upgrade WireMock.Net to Minimal 2.12.0 to resolve Scriban.Signed vulnerabilities ([c814abe](https://github.com/strvmarv/updown-dotnet/commit/c814abe697ec1a53b089ad0dba0fd6c9c4aa3079))
+
 ## [2.2.1](https://github.com/strvmarv/updown-dotnet/compare/UpdownDotnet-v2.2.0...UpdownDotnet-v2.2.1) (2026-02-20)
 
 

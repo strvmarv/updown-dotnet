@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.2.3](https://github.com/strvmarv/updown-dotnet/compare/UpdownDotnet-v2.2.2...UpdownDotnet-v2.2.3) (2026-11-18)
+
+
+### Bug Fixes
+
+* **deps:** update System.Text.Json to 10.0.11 ([09d6975](https://github.com/strvmarv/updown-dotnet/commit/09d69752a03a350a88074b0a4f4b3df59e2a0eef))
+* **deps:** update System.Text.Json to 10.0.11 ([ee645bb](https://github.com/strvmarv/updown-dotnet/commit/ee645bbd0d940d06cfbd09c4b4d9a84140501b7c))
+
 ## [2.2.2](https://github.com/strvmarv/updown-dotnet/compare/UpdownDotnet-v2.2.1...UpdownDotnet-v2.2.2) (2026-07-14)
 
 

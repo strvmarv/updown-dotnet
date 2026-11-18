@@ -30,6 +30,9 @@ jobs:
       !cancelled() &&
       (needs.release-please.outputs.release_created == 'true' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+      id-token: write # OIDC token for NuGet trusted publishing
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
@@ -42,4 +45,9 @@ jobs:
       - run: dotnet build ./src/UpdownDotnet.csproj --no-restore -c Release
       - run: dotnet test ./test/UpdownDotNetTests/UpdownDotNetTests.csproj --no-restore -c Release --verbosity normal
       - run: dotnet pack ./src/UpdownDotnet.csproj -c Release --no-build --output .
-      - run: dotnet nuget push "*.nupkg" --api-key ${{ secrets.NUGET_ORG_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      - name: NuGet login (OIDC -> short-lived API key)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: strvmarv
+      - run: dotnet nuget push "*.nupkg" --api-key ${{ steps.login.outputs.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
